@@ -1,8 +1,8 @@
-import { useState } from "react";
-
 import { type Address, isAddress } from "viem";
 
+import { Fragment, useState } from "react";
 import { AddressInput } from "~~/components/scaffold-eth";
+import { PoolContract } from "./PoolContract";
 
 export default function () {
   const [poolAddress, setPoolAddress] = useState<Address>('');
@@ -41,9 +41,11 @@ export default function () {
         </form>
       </section>
 
-      <section>
-        {poolContracts.map((contractAddress) => (
-          <>{contractAddress}</>
+      <section className="flex items-center flex-col flex-grow pt-10">
+        {poolContracts.map(poolAddress => (
+          <Fragment key={poolAddress}>
+            <PoolContract poolAddress={poolAddress} />
+          </Fragment>
         ))}
       </section>
     </>
