@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Abi, AbiFunction } from "abitype";
 import { Address, TransactionReceipt } from "viem";
 import { useContractWrite, useNetwork, useWaitForTransaction } from "wagmi";
@@ -18,10 +18,15 @@ type WriteOnlyFunctionFormProps = {
   abiFunction: AbiFunction;
   onChange: () => void;
   contractAddress: Address;
+  formState: [Record<string, any>, Dispatch<SetStateAction<Record<string, any>>>]
 };
 
-export const WriteOnlyFunctionForm = ({ abiFunction, onChange, contractAddress }: WriteOnlyFunctionFormProps) => {
-  const [form, setForm] = useState<Record<string, any>>(() => getInitialFormState(abiFunction));
+export const WriteOnlyFunctionForm = ({
+  abiFunction,
+  onChange,
+  contractAddress,
+  formState: [form, setForm] = useState<Record<string, any>>(() => getInitialFormState(abiFunction))
+}: WriteOnlyFunctionFormProps) => {
   const [txValue, setTxValue] = useState<string | bigint>("");
   const { chain } = useNetwork();
   const writeTxn = useTransactor();
