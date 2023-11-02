@@ -77,6 +77,7 @@ export const WriteOnlyFunctionForm = ({
         form={form}
         stateObjectKey={key}
         paramType={input}
+        readonly
       />
     );
   });
