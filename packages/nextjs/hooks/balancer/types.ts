@@ -1,18 +1,20 @@
+import { Address } from "viem";
+
 export type Pool = {
-    address: string;
-    poolId: string;
+    address: Address;
+    poolId: `0x${string}`;
     symbol: string;
     name: string;
-    owner: string;
+    owner: Address;
     totalSupply: string;
     swapFeePercentage: string;
     inRecoveryMode: boolean;
-    vaultAddress: string;
+    vaultAddress: Address;
     poolTokens: PoolToken[];
 }
 
 export type PoolToken = {
-    address: string;
+    address: Address;
     symbol: string;
     decimals: number;
     balance: string;
