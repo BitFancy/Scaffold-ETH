@@ -4,6 +4,7 @@ export interface CommonInputProps<T = string> {
   name?: string;
   placeholder?: string;
   disabled?: boolean;
+  readonly?: boolean;
 }
 
 export enum IntegerVariant {
@@ -83,7 +84,7 @@ export const isValidInteger = (dataType: IntegerVariant, value: bigint | string,
   let valueAsBigInt;
   try {
     valueAsBigInt = BigInt(value);
-  } catch (e) {}
+  } catch (e) { }
   if (typeof valueAsBigInt !== "bigint") {
     if (strict) {
       return false;

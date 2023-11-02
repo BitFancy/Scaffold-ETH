@@ -2,7 +2,14 @@ import { useCallback } from "react";
 import { hexToString, isHex, stringToHex } from "viem";
 import { CommonInputProps, InputBase } from "~~/components/scaffold-eth";
 
-export const Bytes32Input = ({ value, onChange, name, placeholder, disabled }: CommonInputProps) => {
+export const Bytes32Input = ({
+  value,
+  onChange,
+  name,
+  placeholder,
+  disabled,
+  readonly,
+}: CommonInputProps) => {
   const convertStringToBytes32 = useCallback(() => {
     if (!value) {
       return;
@@ -25,6 +32,7 @@ export const Bytes32Input = ({ value, onChange, name, placeholder, disabled }: C
           #
         </div>
       }
+      readonly={readonly}
     />
   );
 };

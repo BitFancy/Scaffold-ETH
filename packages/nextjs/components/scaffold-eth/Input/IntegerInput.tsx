@@ -12,6 +12,7 @@ export const IntegerInput = ({
   placeholder,
   disabled,
   variant = IntegerVariant.UINT256,
+  readonly,
 }: IntegerInputProps) => {
   const [inputError, setInputError] = useState(false);
   const multiplyBy1e18 = useCallback(() => {
@@ -56,6 +57,7 @@ export const IntegerInput = ({
           </div>
         )
       }
+      readonly={readonly}
     />
   );
 };
